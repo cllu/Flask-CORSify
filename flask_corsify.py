@@ -40,7 +40,7 @@ class CORSify(object):
             return response
 
         request_origin = request.headers.get('Origin', None)
-        if request_origin in current_app.config('CORS_ALLOWED_ORIGINS', []):
+        if request_origin in current_app.config.get('CORS_ALLOWED_ORIGINS', []):
             response.headers.add('Access-Control-Allow-Origin', request_origin)
             response.headers.add('Access-Control-Allow-Credentials', 'true')
             response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
